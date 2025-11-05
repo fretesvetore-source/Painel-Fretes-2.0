@@ -45,6 +45,14 @@
                     </div>
                     <h2 class="text-xl font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">Gestão de Fretes Vetore</h2>
                 </div>
+                <button onclick="toggleDarkMode()" id="darkModeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" title="Alternar modo escuro">
+                    <svg id="sunIcon" class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    <svg id="moonIcon" class="w-6 h-6 text-gray-800 dark:text-gray-200 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
             </header>
 
             <main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
@@ -89,23 +97,23 @@
 
                     <!-- Estatísticas -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
                             <h3 class="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">TOTAL DE SOLICITAÇÕES</h3>
                             <p id="totalSolicitacoes" class="text-4xl font-bold text-blue-600">0</p>
                         </div>
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
                             <h3 class="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">NÃO INICIADAS</h3>
                             <p id="naoIniciadas" class="text-4xl font-bold text-cyan-600">0</p>
                         </div>
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
                             <h3 class="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">EM EXECUÇÃO</h3>
                             <p id="emExecucao" class="text-4xl font-bold text-yellow-600">0</p>
                         </div>
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
                             <h3 class="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">CONCLUÍDAS</h3>
                             <p id="concluidas" class="text-4xl font-bold text-green-600">1</p>
                         </div>
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
                             <h3 class="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">CANCELADAS</h3>
                             <p id="canceladas" class="text-4xl font-bold text-red-600">11</p>
                         </div>
@@ -185,36 +193,36 @@
 
                 <!-- ABA: Novo Envio -->
                 <div id="novo-envio" class="tab-content">
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                    <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
                         <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Novo Envio</h2>
                         <p class="text-gray-600 dark:text-gray-400 mb-6">Preencha os detalhes abaixo para criar um novo envio.</p>
                         
                         <form id="formNovoEnvio" class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Solicitante</label>
-                                             <input type="text" name="solicitante" placeholder="Seu nome completo" required class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-primary focus:ring-primary">
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Solicitante</label>
+                                             <input type="text" name="solicitante" placeholder="Seu nome completo" required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">E-mail</label>
-                                      <input type="email" name="email" placeholder="seuemail@exemplo.com" required class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-primary focus:ring-primary">imary">
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Número de Contato</label>
-                                            <input type="tel" name="numero_contato" placeholder="(00) 0 0000-0000" required class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-primary focus:ring-primary">>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Empresa</label>
-                                    <input type="text" name="empresa" placeholder="Nome da sua empresa" required class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-primary focus:ring-primary">
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">E-mail</label>
+                                      <input type="email" name="email" placeholder="seuemail@exemplo.com" required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary">imary">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Tipo</label>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Número de Contato</label>
+                                            <input type="tel" name="numero_contato" placeholder="(00) 0 0000-0000" required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary">>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Empresa</label>
+                                    <input type="text" name="empresa" placeholder="Nome da sua empresa" required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tipo</label>
                                     <div class="flex gap-4">
                                         <label class="flex items-center">
                                             <input type="radio" name="tipo" value="Envio" checked class="text-primary focus:ring-primary">
@@ -227,7 +235,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Tipo de Veículo Necessário*</label>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tipo de Veículo Necessário*</label>
                                     <div class="flex gap-4">
                                         <label class="flex items-center">
                                             <input type="radio" name="tipo_veiculo" value="Caminhão" checked class="text-primary focus:ring-primary">
@@ -243,17 +251,17 @@
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Data de Coleta/Envio</label>
-                                    <input type="date" name="data_coleta" required class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-primary focus:ring-primary">
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Data de Coleta/Envio</label>
+                                    <input type="date" name="data_coleta" required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Horário de Janela</label>
-                                    <input type="time" name="horario_janela" required class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-primary focus:ring-primary">
+                                    <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Horário de Janela</label>
+                                    <input type="time" name="horario_janela" required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary">
                                 </div>
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Urgência?</label>
+                                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Urgência?</label>
                                 <div class="flex gap-4">
                                     <label class="flex items-center">
                                         <input type="radio" name="urgencia" value="Sim" class="text-primary focus:ring-primary">
@@ -267,19 +275,19 @@
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Endereço - Colocar link Google Maps*</label>
-                                <input type="text" name="endereco" required placeholder="Cole aqui o link do Google Maps" class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-primary focus:ring-primary">
+                                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Endereço - Colocar link Google Maps*</label>
+                                <input type="text" name="endereco" required placeholder="Cole aqui o link do Google Maps" class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary">
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Observação (Opcional)</label>
-                                <textarea name="observacao" rows="4" placeholder="Alguma informação adicional?" class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-primary focus:ring-primary"></textarea>
+                                <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Observação (Opcional)</label>
+                                <textarea name="observacao" rows="4" placeholder="Alguma informação adicional?" class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary"></textarea>
                             </div>
 
                             <div id="mensagemEnvio" class="hidden p-4 rounded-md"></div>
 
-                            <div class="flex justify-end">
-                                <button type="submit" class="px-6 py-3 bg-primary text-white rounded-md hover:bg-blue-600 font-medium text-lg">Criar Envio</button>
+                            <div class="flex justify-end pt-4">
+                                <button type="submit" class="px-8 py-3 bg-primary text-white rounded-lg hover:bg-blue-600 font-semibold text-base shadow-sm transition-colors">Criar Envio</button>
                             </div>
                         </form>
                     </div>
@@ -315,10 +323,10 @@
         // ========================================
         
         // URL do Google Apps Script (para ENVIAR dados)
-        const apiUrl = 'COLE_AQUI_A_URL_DO_APPS_SCRIPT';
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbxh9UZhkB-fZlAkyQbl6MY_3Nqa-2yD13pcVFtauDsV76QrkE_vcRAuunw6MAyZWf_o/exec';
         
         // Configuração para LER dados da planilha via CSV
-        const SPREADSHEET_ID = '1oek_3_S_AlZgXeeEGKE2A64m_hrTk9a5GmWouPv8TU8';
+        const SPREADSHEET_ID = '1YOIcPa1sWU2D7YWUfNR8ftlYvCzZSqACgcJpOFcxZP8';
         const SHEET_GID = '1374206693'; // ALTERE PARA O GID DA SUA ABA "Visualizador Geral"
         
         // ========================================
@@ -327,6 +335,45 @@
 
         let todasSolicitacoes = [];
         let solicitacoesFiltradas = [];
+
+        // ========================================
+        // FUNÇÃO DE MODO ESCURO
+        // ========================================
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const sunIcon = document.getElementById('sunIcon');
+            const moonIcon = document.getElementById('moonIcon');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('darkMode', 'light');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('darkMode', 'dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+
+        // Carregar preferência de modo escuro
+        function loadDarkModePreference() {
+            const darkMode = localStorage.getItem('darkMode');
+            const html = document.documentElement;
+            const sunIcon = document.getElementById('sunIcon');
+            const moonIcon = document.getElementById('moonIcon');
+            
+            if (darkMode === 'dark') {
+                html.classList.add('dark');
+                if (sunIcon) sunIcon.classList.add('hidden');
+                if (moonIcon) moonIcon.classList.remove('hidden');
+            } else {
+                html.classList.remove('dark');
+                if (sunIcon) sunIcon.classList.remove('hidden');
+                if (moonIcon) moonIcon.classList.add('hidden');
+            }
+        }
 
         // Função para mudar de aba
         function mudarAba(abaId) {
