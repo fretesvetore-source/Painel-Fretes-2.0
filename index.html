@@ -123,8 +123,8 @@
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
                         <div class="flex items-center justify-between mb-4">
                             <div class="flex items-center gap-3">
-                                <span class="text-2xl">📋</span>
-                                <h2 class="text-xl font-bold text-gray-900 dark:text-white">Todas as Solicitações</h2>
+                                <span class="text-2xl">📅</span>
+                                <h2 class="text-xl font-bold text-gray-900 dark:text-white">Solicitações do Dia</h2>
                             </div>
                             <button onclick="carregarDados()" class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-medium transition-colors" title="Atualizar dados">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -205,14 +205,14 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">E-mail</label>
-                                      <input type="email" name="email" placeholder="seuemail@exemplo.com" required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary">imary">
+                                      <input type="email" name="email" placeholder="seuemail@exemplo.com" required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Número de Contato</label>
-                                            <input type="tel" name="numero_contato" placeholder="(00) 0 0000-0000" required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary">>
+                                            <input type="tel" name="numero_contato" placeholder="(00) 0 0000-0000" required class="form-input w-full bg-background-light dark:bg-background-dark border-gray-300 dark:border-gray-700 rounded-lg focus:ring-primary focus:border-primary">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Empresa</label>
@@ -683,8 +683,9 @@
         carregarDados();
         
         // Atualiza dados automaticamente a cada 1 minuto (60 segundos)
-        setInterval(carregarDados, 60000);
+        setInterval(carregarDados, 10000);
     </script>
 </body>
 
 </html>
+
