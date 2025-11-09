@@ -32,6 +32,34 @@
         .tab-content.active { display: block; }
         .modal { display: none; }
         .modal.active { display: flex; }
+        
+        /* Melhorar contraste dos inputs no modo escuro */
+        .dark input[type="text"],
+        .dark input[type="email"],
+        .dark input[type="tel"],
+        .dark input[type="date"],
+        .dark input[type="time"],
+        .dark textarea {
+            background-color: #1f2937 !important;
+            border-color: #4b5563 !important;
+            color: #f3f4f6 !important;
+        }
+        
+        .dark input[type="text"]:focus,
+        .dark input[type="email"]:focus,
+        .dark input[type="tel"]:focus,
+        .dark input[type="date"]:focus,
+        .dark input[type="time"]:focus,
+        .dark textarea:focus {
+            background-color: #374151 !important;
+            border-color: #1173d4 !important;
+            ring-color: #1173d4 !important;
+        }
+        
+        .dark input::placeholder,
+        .dark textarea::placeholder {
+            color: #9ca3af !important;
+        }
     </style>
 </head>
 
@@ -422,16 +450,16 @@
         function atualizarEstatisticas() {
             const total = todasSolicitacoes.length;
             const naoIniciadas = todasSolicitacoes.filter(s => 
-                s['Status'] && (s['Status'].toLowerCase().includes('não iniciada') || s['Status'].toLowerCase().includes('nao iniciada'))
+                s['Status Manual'] && (s['Status Manual'].toLowerCase().includes('não iniciada') || s['Status Manual'].toLowerCase().includes('nao iniciada'))
             ).length;
             const emExecucao = todasSolicitacoes.filter(s => 
-                s['Status'] && (s['Status'].toLowerCase().includes('em execução') || s['Status'].toLowerCase().includes('em andamento'))
+                s['Status Manual'] && (s['Status Manual'].toLowerCase().includes('em execução') || s['Status Manual'].toLowerCase().includes('em andamento'))
             ).length;
             const concluidas = todasSolicitacoes.filter(s => 
-                s['Status'] && (s['Status'].toLowerCase().includes('concluída') || s['Status'].toLowerCase().includes('concluida'))
+                s['Status Manual'] && (s['Status Manual'].toLowerCase().includes('concluída') || s['Status Manual'].toLowerCase().includes('concluida'))
             ).length;
             const canceladas = todasSolicitacoes.filter(s => 
-                s['Status'] && s['Status'].toLowerCase().includes('cancelad')
+                s['Status Manual'] && s['Status Manual'].toLowerCase().includes('cancelad')
             ).length;
 
             document.getElementById('totalSolicitacoes').textContent = total;
@@ -457,21 +485,48 @@
             return 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
         }
 
-        // Função para renderizar tabela do dashboard
+        // Função para fazer parse de data
+        function parseDate(dateStr) {
+            if (!dateStr) return null;
+            let parts;
+            if (dateStr.includes('/')) {
+                parts = dateStr.split('/');
+                return new Date(parts[2], parts[1] - 1, parts[0]);
+            } else if (dateStr.includes('-')) {
+                parts = dateStr.split('-');
+                return new Date(parts[0], parts[1] - 1, parts[2]);
+            }
+            return null;
+        }
+
+        // Função para renderizar tabela do dashboard (FILTRA POR HOJE)
         function renderizarTabela() {
             const tbody = document.getElementById('tabelaSolicitacoes');
             
-            if (solicitacoesFiltradas.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="11" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">Nenhuma solicitação encontrada</td></tr>';
+            // Obter data de hoje (sem hora)
+            const hoje = new Date();
+            hoje.setHours(0, 0, 0, 0);
+            
+            // Filtrar apenas solicitações com Data de Coleta/Envio = HOJE
+            const demandasHoje = solicitacoesFiltradas.filter(sol => {
+                if (!sol['Data de Coleta/Envio']) return false;
+                const dataSol = parseDate(sol['Data de Coleta/Envio']);
+                if (!dataSol) return false;
+                dataSol.setHours(0, 0, 0, 0);
+                return dataSol.getTime() === hoje.getTime();
+            });
+            
+            if (demandasHoje.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="11" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">Nenhuma solicitação para hoje</td></tr>';
                 return;
             }
 
-            tbody.innerHTML = solicitacoesFiltradas.slice(0, 10).map(sol => `
+            tbody.innerHTML = demandasHoje.map(sol => `
                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">#${sol.ID || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(sol['Status'])}">
-                            ${sol['Status'] || '-'}
+                        <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(sol['Status Manual'])}">
+                            ${sol['Status Manual'] || '-'}
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Dia e Hora da Solicitação'] || '-'}</td>
@@ -502,8 +557,8 @@
                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">#${sol.ID || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(sol['Status'])}">
-                            ${sol['Status'] || '-'}
+                        <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(sol['Status Manual'])}">
+                            ${sol['Status Manual'] || '-'}
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Dia e Hora da Solicitação'] || '-'}</td>
@@ -558,8 +613,8 @@
                     </div>
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Status</p>
-                        <span class="px-3 py-1 inline-flex text-sm leading-5 font-semibold rounded-full ${getStatusColor(solicitacao['Status'])}">
-                            ${solicitacao['Status'] || '-'}
+                        <span class="px-3 py-1 inline-flex text-sm leading-5 font-semibold rounded-full ${getStatusColor(solicitacao['Status Manual'])}">
+                            ${solicitacao['Status Manual'] || '-'}
                         </span>
                     </div>
                     <div>
@@ -688,6 +743,4 @@
 </body>
 
 </html>
-
-
 
