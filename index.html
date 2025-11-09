@@ -422,16 +422,16 @@
         function atualizarEstatisticas() {
             const total = todasSolicitacoes.length;
             const naoIniciadas = todasSolicitacoes.filter(s => 
-                s['Status Manual'] && (s['Status Manual'].toLowerCase().includes('não iniciada') || s['Status Manual'].toLowerCase().includes('nao iniciada'))
+                s['Status'] && (s['Status'].toLowerCase().includes('não iniciada') || s['Status'].toLowerCase().includes('nao iniciada'))
             ).length;
             const emExecucao = todasSolicitacoes.filter(s => 
-                s['Status Manual'] && (s['Status Manual'].toLowerCase().includes('em execução') || s['Status Manual'].toLowerCase().includes('em andamento'))
+                s['Status'] && (s['Status'].toLowerCase().includes('em execução') || s['Status'].toLowerCase().includes('em andamento'))
             ).length;
             const concluidas = todasSolicitacoes.filter(s => 
-                s['Status Manual'] && (s['Status Manual'].toLowerCase().includes('concluída') || s['Status Manual'].toLowerCase().includes('concluida'))
+                s['Status'] && (s['Status'].toLowerCase().includes('concluída') || s['Status'].toLowerCase().includes('concluida'))
             ).length;
             const canceladas = todasSolicitacoes.filter(s => 
-                s['Status Manual'] && s['Status Manual'].toLowerCase().includes('cancelad')
+                s['Status'] && s['Status'].toLowerCase().includes('cancelad')
             ).length;
 
             document.getElementById('totalSolicitacoes').textContent = total;
@@ -688,4 +688,5 @@
 </body>
 
 </html>
+
 
