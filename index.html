@@ -678,7 +678,7 @@
 
             // Filtrar solicitações do mês atual
             const solicitacoesMes = solicitacoes.filter(sol => {
-                const dataSol = parseDate(sol['Data de Solicitação']);
+                const dataSol = parseDate(sol['Dia e Hora da Solicitação']);
                 return dataSol && dataSol.getMonth() === mesAtual && dataSol.getFullYear() === anoAtual;
             });
 
@@ -734,7 +734,7 @@
                 const mesNome = mesHistorico.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
 
                 const solsMes = solicitacoes.filter(sol => {
-                    const dataSol = parseDate(sol['Data de Solicitação']);
+                    const dataSol = parseDate(sol['Dia e Hora da Solicitação']);
                     return dataSol && dataSol.getMonth() === mesNum && dataSol.getFullYear() === anoNum;
                 });
 
