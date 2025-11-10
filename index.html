@@ -652,7 +652,8 @@
                 solicitacoesFiltradas = todasSolicitacoes.filter(sol => 
                     (sol.ID && sol.ID.toString().toLowerCase().includes(termo)) ||
                     (sol['E-mail'] && sol['E-mail'].toLowerCase().includes(termo)) ||
-                    (sol.Solicitante && sol.Solicitante.toLowerCase().includes(termo))
+                    (sol.Solicitante && sol.Solicitante.toLowerCase().includes(termo)) ||
+                    (sol.Empresa && sol.Empresa.toLowerCase().includes(termo))
                 );
             }
             
@@ -802,8 +803,8 @@
                         <p class="text-base text-gray-900 dark:text-white">${solicitacao['E-mail'] || '-'}</p>
                     </div>
                     <div>
-                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Telefone</p>
-                        <p class="text-base text-gray-900 dark:text-white">${solicitacao['Número de Contato'] || '-'}</p>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Motorista Responsável</p>
+                        <p class="text-base text-gray-900 dark:text-white">${solicitacao['Motorista Responsável'] || '-'}</p>
                     </div>
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Empresa</p>
