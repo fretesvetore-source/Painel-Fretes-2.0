@@ -614,12 +614,12 @@
         function renderizarTabelaTodas() {
             const tbody = document.getElementById('tabelaTodasSolicitacoes');
             
-            if (todasSolicitacoes.length === 0) {
+            if (solicitacoesFiltradas.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="11" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">Nenhuma solicitação encontrada</td></tr>';
                 return;
             }
 
-            tbody.innerHTML = todasSolicitacoes.map(sol => `
+            tbody.innerHTML = solicitacoesFiltradas.map(sol => `
                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">#${sol.ID || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
@@ -656,15 +656,14 @@
                 );
             }
             
-            renderizarTabela();
+            renderizarTabelaTodas();
         }
 
         // Função para limpar busca
         function limparBusca() {
             document.getElementById('searchInput').value = '';
             solicitacoesFiltradas = todasSolicitacoes;
-            renderizarTabela();
-            calcularEstatisticas();
+            renderizarTabelaTodas();
         }
 
         // Função para abrir modal
