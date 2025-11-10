@@ -93,6 +93,9 @@
                         <button onclick="mudarAba('todas')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300" data-tab="todas">
                             Todas as Solicitações
                         </button>
+                        <button onclick="mudarAba('dados')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300" data-tab="dados">
+                            Dados
+                        </button>
                         <button onclick="mudarAba('novo-envio')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300" data-tab="novo-envio">
                             Novo Envio
                         </button>
@@ -215,6 +218,68 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ABA: Dados -->
+                <div id="dados" class="tab-content">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">📊</span>
+                                <h2 class="text-xl font-bold text-gray-900 dark:text-white">Estatísticas e Dados</h2>
+                            </div>
+                            <button onclick="carregarDados()" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-blue-600 font-medium flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                </svg>
+                                Atualizar
+                            </button>
+                        </div>
+
+                        <!-- Estatísticas do Mês Atual -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">📅 Mês Atual</h3>
+                            
+                            <!-- Total de Fretes -->
+                            <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg shadow-lg p-6 mb-6">
+                                <div class="text-white">
+                                    <p class="text-sm font-medium opacity-90">Total de Fretes do Mês</p>
+                                    <p id="totalFreteMes" class="text-4xl font-bold mt-2">0</p>
+                                </div>
+                            </div>
+
+                            <!-- Top 3 Empresas e Solicitantes -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Top 3 Empresas -->
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                                        <span>🏢</span> Top 3 Empresas Atendidas
+                                    </h4>
+                                    <div id="topEmpresasMes" class="space-y-2">
+                                        <p class="text-gray-500 dark:text-gray-400 text-sm">Carregando...</p>
+                                    </div>
+                                </div>
+
+                                <!-- Top 3 Solicitantes -->
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                                        <span>👤</span> Top 3 Solicitantes
+                                    </h4>
+                                    <div id="topSolicitantesMes" class="space-y-2">
+                                        <p class="text-gray-500 dark:text-gray-400 text-sm">Carregando...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Histórico dos Últimos 3 Meses -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">📈 Histórico dos Últimos 3 Meses</h3>
+                            <div id="historicoMeses" class="space-y-6">
+                                <p class="text-gray-500 dark:text-gray-400">Carregando...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -745,4 +810,7 @@
 </body>
 
 </html>
+
+
+
 
