@@ -668,6 +668,116 @@
         }
 
         // Função para abrir modal
+        // Função para calcular estatísticas
+        function calcularEstatisticas() {
+            const agora = new Date();
+            const mesAtual = agora.getMonth();
+            const anoAtual = agora.getFullYear();
+
+            // Filtrar solicitações do mês atual
+            const solicitacoesMes = solicitacoes.filter(sol => {
+                const dataSol = parseDate(sol['Data de Solicitação']);
+                return dataSol && dataSol.getMonth() === mesAtual && dataSol.getFullYear() === anoAtual;
+            });
+
+            // Total de fretes do mês
+            document.getElementById('totalFreteMes').textContent = solicitacoesMes.length;
+
+            // Top 3 Empresas
+            const empresasCount = {};
+            solicitacoesMes.forEach(sol => {
+                const empresa = sol.Empresa || 'Sem empresa';
+                empresasCount[empresa] = (empresasCount[empresa] || 0) + 1;
+            });
+            const topEmpresas = Object.entries(empresasCount)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 3);
+
+            const topEmpresasHTML = topEmpresas.length > 0 
+                ? topEmpresas.map((item, index) => `
+                    <div class="flex items-center justify-between p-2 bg-white dark:bg-gray-600 rounded">
+                        <span class="font-medium text-gray-900 dark:text-white">${index + 1}. ${item[0]}</span>
+                        <span class="text-sm font-semibold text-blue-600 dark:text-blue-400">${item[1]} fretes</span>
+                    </div>
+                `).join('')
+                : '<p class="text-gray-500 dark:text-gray-400 text-sm">Nenhum dado disponível</p>';
+            document.getElementById('topEmpresasMes').innerHTML = topEmpresasHTML;
+
+            // Top 3 Solicitantes
+            const solicitantesCount = {};
+            solicitacoesMes.forEach(sol => {
+                const solicitante = sol.Solicitante || 'Sem nome';
+                solicitantesCount[solicitante] = (solicitantesCount[solicitante] || 0) + 1;
+            });
+            const topSolicitantes = Object.entries(solicitantesCount)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 3);
+
+            const topSolicitantesHTML = topSolicitantes.length > 0
+                ? topSolicitantes.map((item, index) => `
+                    <div class="flex items-center justify-between p-2 bg-white dark:bg-gray-600 rounded">
+                        <span class="font-medium text-gray-900 dark:text-white">${index + 1}. ${item[0]}</span>
+                        <span class="text-sm font-semibold text-blue-600 dark:text-blue-400">${item[1]} solicitações</span>
+                    </div>
+                `).join('')
+                : '<p class="text-gray-500 dark:text-gray-400 text-sm">Nenhum dado disponível</p>';
+            document.getElementById('topSolicitantesMes').innerHTML = topSolicitantesHTML;
+
+            // Histórico dos últimos 3 meses
+            let historicoHTML = '';
+            for (let i = 1; i <= 3; i++) {
+                const mesHistorico = new Date(anoAtual, mesAtual - i, 1);
+                const mesNum = mesHistorico.getMonth();
+                const anoNum = mesHistorico.getFullYear();
+                const mesNome = mesHistorico.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+
+                const solsMes = solicitacoes.filter(sol => {
+                    const dataSol = parseDate(sol['Data de Solicitação']);
+                    return dataSol && dataSol.getMonth() === mesNum && dataSol.getFullYear() === anoNum;
+                });
+
+                // Top empresas do mês
+                const empCount = {};
+                solsMes.forEach(sol => {
+                    const emp = sol.Empresa || 'Sem empresa';
+                    empCount[emp] = (empCount[emp] || 0) + 1;
+                });
+                const topEmp = Object.entries(empCount).sort((a, b) => b[1] - a[1]).slice(0, 3);
+
+                // Top solicitantes do mês
+                const solCount = {};
+                solsMes.forEach(sol => {
+                    const solNome = sol.Solicitante || 'Sem nome';
+                    solCount[solNome] = (solCount[solNome] || 0) + 1;
+                });
+                const topSol = Object.entries(solCount).sort((a, b) => b[1] - a[1]).slice(0, 3);
+
+                historicoHTML += `
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                        <h4 class="font-semibold text-gray-900 dark:text-white mb-3 capitalize">📅 ${mesNome}</h4>
+                        <div class="mb-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Total de fretes: <span class="font-bold text-blue-600 dark:text-blue-400">${solsMes.length}</span></p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">🏢 Top Empresas:</p>
+                                ${topEmp.length > 0 ? topEmp.map((item, idx) => `
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">${idx + 1}. ${item[0]} (${item[1]})</p>
+                                `).join('') : '<p class="text-sm text-gray-500">Nenhum dado</p>'}
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">👤 Top Solicitantes:</p>
+                                ${topSol.length > 0 ? topSol.map((item, idx) => `
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">${idx + 1}. ${item[0]} (${item[1]})</p>
+                                `).join('') : '<p class="text-sm text-gray-500">Nenhum dado</p>'}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            document.getElementById('historicoMeses').innerHTML = historicoHTML;
+        }
+
         function abrirModal(solicitacao) {
             const modal = document.getElementById('modalDetalhes');
             const conteudo = document.getElementById('conteudoModal');
@@ -810,6 +920,9 @@
 </body>
 
 </html>
+
+
+
 
 
 
