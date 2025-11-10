@@ -500,7 +500,9 @@
                     complete: function(results) {
                         todasSolicitacoes = results.data.filter(row => row.ID && row.ID !== '');
                         solicitacoesFiltradas = todasSolicitacoes;
+                        solicitacoes = todasSolicitacoes; // Atualizar variável global para calcularEstatisticas
                         atualizarEstatisticas();
+                        calcularEstatisticas(); // Atualizar aba Dados
                         renderizarTabela();
                         renderizarTabelaTodas();
                     }
