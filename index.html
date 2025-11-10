@@ -110,19 +110,6 @@
                         <p class="text-gray-600 dark:text-gray-400">Consulte o status das suas solicitações em tempo real</p>
                     </div>
 
-                    <!-- Busca -->
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-2xl">🔍</span>
-                            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Buscar Solicitação</h2>
-                        </div>
-                        <div class="flex gap-3">
-                            <input type="text" id="searchInput" placeholder="Digite o ID do pedido ou e-mail..." class="flex-1 rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-primary focus:ring-primary">
-                            <button onclick="buscarSolicitacao()" class="px-6 py-2 bg-primary text-white rounded-md hover:bg-blue-600 font-medium">Buscar</button>
-                            <button onclick="limparBusca()" class="px-6 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 font-medium">Limpar</button>
-                        </div>
-                    </div>
-
                     <!-- Estatísticas -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
@@ -170,7 +157,7 @@
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">DATA SOLICITAÇÃO</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">SOLICITANTE</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">E-MAIL</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">TELEFONE</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">EMPRESA</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">TIPO</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">VEÍCULO</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">DATA PREVISTA</th>
@@ -190,6 +177,19 @@
 
                 <!-- ABA: Todas as Solicitações -->
                 <div id="todas" class="tab-content">
+                    <!-- Busca -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-2xl">🔍</span>
+                            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Buscar Solicitação</h2>
+                        </div>
+                        <div class="flex gap-3">
+                            <input type="text" id="searchInput" placeholder="Digite o ID do pedido ou e-mail..." class="flex-1 rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-primary focus:ring-primary">
+                            <button onclick="buscarSolicitacao()" class="px-6 py-2 bg-primary text-white rounded-md hover:bg-blue-600 font-medium">Buscar</button>
+                            <button onclick="limparBusca()" class="px-6 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 font-medium">Limpar</button>
+                        </div>
+                    </div>
+                    
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
                         <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Todas as Solicitações</h2>
                         <div class="overflow-x-auto">
@@ -201,7 +201,7 @@
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">DATA SOLICITAÇÃO</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">SOLICITANTE</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">E-MAIL</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">TELEFONE</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">EMPRESA</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">TIPO</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">VEÍCULO</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">DATA PREVISTA</th>
@@ -532,7 +532,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Dia e Hora da Solicitação'] || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">${sol.Solicitante || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['E-mail'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Número de Contato'] || '-'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol.Empresa || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol.Tarefa || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Veículo'] || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Data de Coleta/Envio'] || '-'}</td>
@@ -564,7 +564,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Dia e Hora da Solicitação'] || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">${sol.Solicitante || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['E-mail'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Número de Contato'] || '-'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol.Empresa || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol.Tarefa || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Veículo'] || '-'}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Data de Coleta/Envio'] || '-'}</td>
@@ -591,6 +591,7 @@
             }
             
             renderizarTabela();
+            calcularEstatisticas();
         }
 
         // Função para limpar busca
@@ -598,6 +599,7 @@
             document.getElementById('searchInput').value = '';
             solicitacoesFiltradas = todasSolicitacoes;
             renderizarTabela();
+            calcularEstatisticas();
         }
 
         // Função para abrir modal
@@ -743,11 +745,4 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
 
