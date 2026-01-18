@@ -84,7 +84,6 @@
             </header>
 
             <main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
-                <!-- Navegação por Abas -->
                 <div class="mb-6 border-b border-gray-200 dark:border-gray-700">
                     <nav class="flex space-x-8" aria-label="Tabs">
                         <button onclick="mudarAba('dashboard')" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-primary text-primary" data-tab="dashboard">
@@ -103,7 +102,6 @@
                     </nav>
                 </div>
 
-                <!-- ABA: Dashboard -->
                 <div id="dashboard" class="tab-content active">
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
                         <div class="flex items-center gap-3 mb-4">
@@ -113,7 +111,6 @@
                         <p class="text-gray-600 dark:text-gray-400">Consulte o status das suas solicitações em tempo real</p>
                     </div>
 
-                    <!-- Estatísticas -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
                             <h3 class="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">TOTAL DE SOLICITAÇÕES</h3>
@@ -129,15 +126,14 @@
                         </div>
                         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
                             <h3 class="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">CONCLUÍDAS</h3>
-                            <p id="concluidas" class="text-4xl font-bold text-green-600">1</p>
+                            <p id="concluidas" class="text-4xl font-bold text-green-600">0</p>
                         </div>
                         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 text-center">
                             <h3 class="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">CANCELADAS</h3>
-                            <p id="canceladas" class="text-4xl font-bold text-red-600">11</p>
+                            <p id="canceladas" class="text-4xl font-bold text-red-600">0</p>
                         </div>
                     </div>
 
-                    <!-- Tabela Resumida -->
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
                         <div class="flex items-center justify-between mb-4">
                             <div class="flex items-center gap-3">
@@ -155,17 +151,17 @@
                             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                 <thead class="bg-gray-50 dark:bg-gray-700">
                                     <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ID</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">STATUS</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">DATA SOLICITAÇÃO</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">SOLICITANTE</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">E-MAIL</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">EMPRESA</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">TIPO</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">VEÍCULO</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">DATA PREVISTA</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">URGÊNCIA</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">AÇÕES</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ID</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">STATUS</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">DATA</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">SOLICITANTE</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">E-MAIL</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">EMPRESA</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">TIPO</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">VEÍCULO</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">PREVISÃO</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">URG.</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">AÇÕES</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tabelaSolicitacoes" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -178,9 +174,7 @@
                     </div>
                 </div>
 
-                <!-- ABA: Todas as Solicitações -->
                 <div id="todas" class="tab-content">
-                    <!-- Busca -->
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
                         <div class="flex items-center gap-3 mb-4">
                             <span class="text-2xl">🔍</span>
@@ -199,17 +193,17 @@
                             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                 <thead class="bg-gray-50 dark:bg-gray-700">
                                     <tr>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ID</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">STATUS</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">DATA SOLICITAÇÃO</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">SOLICITANTE</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">E-MAIL</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">EMPRESA</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">TIPO</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">VEÍCULO</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">DATA PREVISTA</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">URGÊNCIA</th>
-                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">AÇÕES</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ID</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">STATUS</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">DATA</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">SOLICITANTE</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">E-MAIL</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">EMPRESA</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">TIPO</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">VEÍCULO</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">PREVISÃO</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">URG.</th>
+                                        <th class="px-2 py-2 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">AÇÕES</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tabelaTodasSolicitacoes" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -222,7 +216,6 @@
                     </div>
                 </div>
 
-                <!-- ABA: Dados -->
                 <div id="dados" class="tab-content">
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
                         <div class="flex items-center justify-between mb-6">
@@ -238,11 +231,9 @@
                             </button>
                         </div>
 
-                        <!-- Estatísticas do Mês Atual -->
                         <div class="mb-8">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">📅 Mês Atual</h3>
                             
-                            <!-- Total de Fretes -->
                             <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg shadow-lg p-6 mb-6">
                                 <div class="text-white">
                                     <p class="text-sm font-medium opacity-90">Total de Fretes do Mês</p>
@@ -250,9 +241,7 @@
                                 </div>
                             </div>
 
-                            <!-- Top 3 Empresas e Solicitantes -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- Top 3 Empresas -->
                                 <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                                     <h4 class="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                                         <span>🏢</span> Top 3 Empresas Atendidas
@@ -262,7 +251,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Top 3 Solicitantes -->
                                 <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                                     <h4 class="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                                         <span>👤</span> Top 3 Solicitantes
@@ -274,7 +262,6 @@
                             </div>
                         </div>
 
-                        <!-- Histórico dos Últimos 3 Meses -->
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">📈 Histórico dos Últimos 3 Meses</h3>
                             <div id="historicoMeses" class="space-y-6">
@@ -284,7 +271,6 @@
                     </div>
                 </div>
 
-                <!-- ABA: Novo Envio -->
                 <div id="novo-envio" class="tab-content">
                     <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm">
                         <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Novo Envio</h2>
@@ -391,7 +377,6 @@
         </div>
     </div>
 
-    <!-- Modal de Detalhes -->
     <div id="modalDetalhes" class="modal fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div class="p-6">
@@ -404,8 +389,7 @@
                     </button>
                 </div>
                 <div id="conteudoModal" class="space-y-4">
-                    <!-- Conteúdo será preenchido dinamicamente -->
-                </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -591,28 +575,29 @@
             });
             
             if (demandasHoje.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="11" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">Nenhuma solicitação para hoje</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="11" class="px-2 py-2 text-center text-gray-500 dark:text-gray-400">Nenhuma solicitação para hoje</td></tr>';
                 return;
             }
 
+            // ALTERAÇÕES: Padding reduzido e TRUNCATE em colunas longas
             tbody.innerHTML = demandasHoje.map(sol => `
                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">#${sol.ID || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-2 py-2 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">#${sol.ID || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap">
                         <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(sol['Status'])}">
                             ${sol['Status'] || '-'}
                         </span>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Dia e Hora da Solicitação'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">${sol.Solicitante || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['E-mail'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol.Empresa || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol.Tarefa || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Veículo'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Data de Coleta/Envio'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Urgente?'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm">
-                        <button onclick='abrirModal(${JSON.stringify(sol).replace(/'/g, "\\'")})'  class="text-primary hover:text-blue-700 font-medium">Ver Detalhes</button>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Dia e Hora da Solicitação'] || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-white max-w-[150px] truncate" title="${sol.Solicitante}">${sol.Solicitante || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 max-w-[120px] truncate" title="${sol['E-mail']}">${sol['E-mail'] || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 max-w-[120px] truncate" title="${sol.Empresa}">${sol.Empresa || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol.Tarefa || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Veículo'] || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Data de Coleta/Envio'] || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Urgente?'] || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm">
+                        <button onclick='abrirModal(${JSON.stringify(sol).replace(/'/g, "\\'")})'  class="text-primary hover:text-blue-700 font-medium text-xs">Ver Detalhes</button>
                     </td>
                 </tr>
             `).join('');
@@ -623,28 +608,29 @@
             const tbody = document.getElementById('tabelaTodasSolicitacoes');
             
             if (solicitacoesFiltradas.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="11" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">Nenhuma solicitação encontrada</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="11" class="px-2 py-2 text-center text-gray-500 dark:text-gray-400">Nenhuma solicitação encontrada</td></tr>';
                 return;
             }
 
+            // ALTERAÇÕES: Mesma lógica de compactação
             tbody.innerHTML = solicitacoesFiltradas.map(sol => `
                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">#${sol.ID || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-2 py-2 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">#${sol.ID || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap">
                         <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(sol['Status'])}">
                             ${sol['Status'] || '-'}
                         </span>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Dia e Hora da Solicitação'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">${sol.Solicitante || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['E-mail'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol.Empresa || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol.Tarefa || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Veículo'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Data de Coleta/Envio'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Urgente?'] || '-'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm">
-                        <button onclick='abrirModal(${JSON.stringify(sol).replace(/'/g, "\\'")})'  class="text-primary hover:text-blue-700 font-medium">Ver Detalhes</button>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Dia e Hora da Solicitação'] || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-900 dark:text-white max-w-[150px] truncate" title="${sol.Solicitante}">${sol.Solicitante || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 max-w-[120px] truncate" title="${sol['E-mail']}">${sol['E-mail'] || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 max-w-[120px] truncate" title="${sol.Empresa}">${sol.Empresa || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol.Tarefa || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Veículo'] || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Data de Coleta/Envio'] || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${sol['Urgente?'] || '-'}</td>
+                    <td class="px-2 py-2 whitespace-nowrap text-sm">
+                        <button onclick='abrirModal(${JSON.stringify(sol).replace(/'/g, "\\'")})'  class="text-primary hover:text-blue-700 font-medium text-xs">Ver Detalhes</button>
                     </td>
                 </tr>
             `).join('');
@@ -928,9 +914,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
